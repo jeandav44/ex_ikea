@@ -1,19 +1,25 @@
+/**
+*@date 13/1/2017
+*@name index.js
+*@version 1.0
+*@author Jean Andrade
+ @description containts the angular code used by the popUp
+*/
+
+
 // jQuery code
 $(document).ready(function () {
 
 });
-
-// http://stackoverflow.com/questions/20612484/angularjs-separating-directive-files-but-staying-on-the-same-module
-// http://stackoverflow.com/questions/20087627/how-to-create-separate-angularjs-controller-files
-// https://docs.angularjs.org/api/ng/directive/ngApp
 
 (function(){
   angular.module('FurnituresApp').controller('PopUpController', ['$scope', '$window', function($scope, $window){
 
     // Controller properties
     this.furnitures; // Furniture data to show
-
+    $scope.date= new Date();
     // Get an Array with dimension num
+
     $scope.getNumber = function(num) {
       var a = [];
       for(var i=0; i<num; i++) a.push(i);
@@ -21,10 +27,7 @@ $(document).ready(function () {
     }
 
     this.initialize = function () {
-      // Pass variables between controllers
-      // http://stackoverflow.com/questions/12008908/angularjs-how-can-i-pass-variables-between-controllers
-      // http://stackoverflow.com/questions/33711299/access-variables-defined-in-other-controller/33711422
-      // http://stackoverflow.com/questions/21919962/share-data-between-angularjs-controllers?noredirect=1&lq=1
+
 
       // Load data from the window opener using angular object and DOM
       this.furnitures = $window.opener.angular.element('#Furnitures-ctrl').scope().FurnituresCtrl.furnitures;
@@ -34,8 +37,20 @@ $(document).ready(function () {
     this.close = function () {
       $window.close();
     };
+    this.print = function () {
+      $window.print();
+    };
 
     this.initialize();
+
+    this.sum = function(){
+      var suma = 0;
+      for (var i = 0; i < this.furnitures.length; i++) {
+        suma += this.furnitures[i].getPrice();
+
+      }
+      return suma;
+    }
 
   }]);
 

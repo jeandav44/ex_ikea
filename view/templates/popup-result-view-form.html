@@ -8,5 +8,8 @@
     	In Offer: {{furniture.getInOffer()}}<br/>
     	<br/>
     </div>
+      Total price: {{PopUpCtrl.sum()}} <br/>
+      Date:  {{ date | date : "fullDate" }}
     <button class="btn btn-default pull-right" ng-click="PopUpCtrl.close()">Close</button>
+        <button class="btn btn-default pull-right" ng-click="PopUpCtrl.print()">Print</button>
 </div>

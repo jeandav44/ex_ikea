@@ -1,3 +1,12 @@
+/**
+*@date 13/1/2017
+*@name furniture.js
+*@version 1.0
+*@author Jean Andrade
+ @description implements the furniture
+*/
+
+
 function Furniture() {
   // Properties definition
   this.id;

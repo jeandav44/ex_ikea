@@ -1,17 +1,20 @@
+/**
+*@date 13/1/2017
+*@name index.js
+*@version 1.0
+*@author Jean Andrade
+ @description containts the angular code
+*/
+
+
 // jQuery code
 $(document).ready(function () {
 
 });
 
-// angularjs code
-/* (function(){ // write your code here })(); */
-(function(){
-  // This is the instance of our angular app
-  //var app = angular.module("FurnituresApp", []);
 
-// http://stackoverflow.com/questions/20612484/angularjs-separating-directive-files-but-staying-on-the-same-module
-// http://stackoverflow.com/questions/20087627/how-to-create-separate-angularjs-controller-files
-// https://docs.angularjs.org/api/ng/directive/ngApp
+(function(){
+
 
 angular.module('FurnituresApp').controller('FurnituresController', ['$scope', '$window', function($scope, $window){
 
@@ -59,14 +62,23 @@ angular.module('FurnituresApp').controller('FurnituresController', ['$scope', '$
       return (!isNaN(this.nFurnitures) && this.nFurnitures >= 1 && this.nFurnitures % 1 === 0 && this.nFurnitures !== "");
     };
 
-    /*
-    this.validFurnitureName = function (i) {
-      return (this.furnitures[i].getName() !== "");
-    };*/
-
     this.validFurnitureEntryDate = function (i) {
-      return (this.furnitures[i].getEntryDate() !== "");
+
+      var dateString = this.furnitures[i].getEntryDate();
+
+      var regEx = /^\d{4}-\d{2}-\d{2}$/;
+      if(!dateString.match(regEx)){return false;}
+
+      var d;
+      if(!((d = new Date(dateString))|0)){return false;}
+      else {
+        return true;
+      }
+
     };
+
+
+
 
     this.validFurniturePrice = function (i) {
       return (!isNaN(this.furnitures[i].getPrice()) && this.furnitures[i].getPrice() > 0 && this.furnitures[i].getPrice() !== "");
@@ -88,15 +100,18 @@ angular.module('FurnituresApp').controller('FurnituresController', ['$scope', '$
 
     this.validForm = function () {
       for (var i = 0; i < this.furnitures.length; i++) {
-        if (/*!this.validFurnitureName(i) ||*/ !this.validFurnitureEntryDate || !this.validFurniturePrice(i)) return false;
+        if (!this.validFurnitureEntryDate(i) || !this.validFurniturePrice(i)) return false;
       }
       return true;
     }
 
     this.popupResult = function () {
+
       if (this.validForm()) {
+        var introduce= confirm("are you sure to introuce this data?");
+        if(introduce){
         var popupWindow = window.open('view/popup/popup.html');
-        $scope.action= "init";
+        $scope.action= "init";}
       }
     }
 
