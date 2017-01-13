@@ -27,7 +27,6 @@ angular.module('FurnituresApp').controller('FurnituresController', ['$scope', '$
     $scope.action = "init";
 
     this.initialize = function () {
-      // TODO
 
       this.furnitureTypes = [];
       var furnitureTypeNames = ["Chair", "Table", "Bed"];
@@ -51,7 +50,7 @@ angular.module('FurnituresApp').controller('FurnituresController', ['$scope', '$
       for (var i = 0; i < this.nFurnitures; i++) {
         var furnitureObj = new Furniture();
         // id, idFurnitureType, name, director, price, available
-        furnitureObj.construct(i, this.furnitureType, "", "", "", true);
+        furnitureObj.construct(i, this.furnitureType.getName(), "", "",true);
         this.furnitures.push(furnitureObj);
       }
     };
@@ -63,12 +62,12 @@ angular.module('FurnituresApp').controller('FurnituresController', ['$scope', '$
     /*
     this.validFurnitureName = function (i) {
       return (this.furnitures[i].getName() !== "");
+    };*/
+
+    this.validFurnitureEntryDate = function (i) {
+      return (this.furnitures[i].getEntryDate() !== "");
     };
 
-    this.validFurnitureDirector = function (i) {
-      return (this.furnitures[i].getDirector() !== "");
-    };
-*/
     this.validFurniturePrice = function (i) {
       return (!isNaN(this.furnitures[i].getPrice()) && this.furnitures[i].getPrice() > 0 && this.furnitures[i].getPrice() !== "");
     };
@@ -89,7 +88,7 @@ angular.module('FurnituresApp').controller('FurnituresController', ['$scope', '$
 
     this.validForm = function () {
       for (var i = 0; i < this.furnitures.length; i++) {
-        if (/*!this.validFurnitureName(i) || !this.validFurnitureDirector(i) || */!this.validFurniturePrice(i)) return false;
+        if (/*!this.validFurnitureName(i) ||*/ !this.validFurnitureEntryDate || !this.validFurniturePrice(i)) return false;
       }
       return true;
     }

@@ -3,17 +3,19 @@ function Furniture() {
   this.id;
   this.idFurnitureType;
   this.price;
-  this.inOffer;
   this.entryDate;
+  this.inOffer;
+
 
 
   // Methods definition
-  this.construct = function (id, idFurnitureType, price,inOffer, entryDate) {
+  this.construct = function (id,idFurnitureType,price,entryDate,inOffer) {
     this.id = id;
     this.idFurnitureType = idFurnitureType;
     this.price = price;
-    this.inOffer = inOffer;
     this.entryDate = entryDate;
+    this.inOffer = inOffer;
+
   }
 
 //getters
@@ -25,17 +27,16 @@ function Furniture() {
     return this.idFurnitureType;
   }
 
-
   this.getPrice = function () {
     return this.price;
   }
 
+  this.getEntryDate = function () {
+      return this.entryDate;
+    }
+
   this.getInOffer = function () {
     return this.inOffer;
-  }
-
-  this.entryDate = function () {
-    return this.entryDate;
   }
 
 
@@ -52,12 +53,14 @@ function Furniture() {
     this.price = price;
   }
 
+  this.setEntryDate = function (entryDate) {
+    this.entryDate = entryDate ;
+  }
+
   this.setInOffer = function (inOffer) {
     this.inOffer = inOffer ;
   }
 
-  this.entryDate = function (entryDate) {
-    this.entryDate = entryDate ;
-  }
+
 
 }

@@ -8,27 +8,27 @@ $(document).ready(function () {
 // https://docs.angularjs.org/api/ng/directive/ngApp
 
 (function(){
-  angular.module('VideoClubApp').controller('PopUpController', ['$scope', '$window', function($scope, $window){
+  angular.module('FurnituresApp').controller('PopUpController', ['$scope', '$window', function($scope, $window){
 
     // Controller properties
-    this.films; // Film data to show
-      
+    this.furnitures; // Furniture data to show
+
     // Get an Array with dimension num
     $scope.getNumber = function(num) {
-      var a = []; 
+      var a = [];
       for(var i=0; i<num; i++) a.push(i);
         return a;
     }
-     
+
     this.initialize = function () {
-      // Pass variables between controllers   
+      // Pass variables between controllers
       // http://stackoverflow.com/questions/12008908/angularjs-how-can-i-pass-variables-between-controllers
       // http://stackoverflow.com/questions/33711299/access-variables-defined-in-other-controller/33711422
       // http://stackoverflow.com/questions/21919962/share-data-between-angularjs-controllers?noredirect=1&lq=1
 
       // Load data from the window opener using angular object and DOM
-      this.films = $window.opener.angular.element('#videoclub-ctrl').scope().VideoClubCtrl.films;
-      // console.log(this.films);
+      this.furnitures = $window.opener.angular.element('#Furnitures-ctrl').scope().FurnituresCtrl.furnitures;
+      // console.log(this.furnitures);
     };
 
     this.close = function () {
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
   }]);
 
-  angular.module('VideoClubApp').directive("popupResultViewForm", function () {
+  angular.module('FurnituresApp').directive("popupResultViewForm", function () {
     //app.directive("popupViewForm", function () {
     return {
       restrict: 'E', // type of directive

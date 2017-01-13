@@ -3,33 +3,29 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Code</th>
       <th>Price</th>
-      <th>Price</th>
-      <th>Available</th>
+      <th>Entry Date</th>
+      <th>In Offer</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="furniture in FurnituresCtrl.furnitures">
       <td>
-        <div class="form-group" ng-class="{'has-error': !FurnituresCtrl.validFurnitureName($index)}">
-          <input ng-model="furniture.name" id="furnitureName{{$index}}" type="text" class="form-control" placeholder="Furniture name" />
-        </div>
-      </td>
-      <td>
-        <div class="form-group" ng-class="{'has-error': !FurnituresCtrl.validFurnitureDirector($index)}">
-          <input ng-model="furniture.director" id="furnitureDirector{{$index}}" type="text" class="form-control" placeholder="Furniture director" />
-        </div>
-      </td>
-      <td>
         <div class="form-group" ng-class="{'has-error': !FurnituresCtrl.validFurniturePrice($index)}">
-          <input ng-model="furniture.price" id="furnitureName{{$index}}" type="number" min="0" class="form-control" placeholder="Furniture price" />
+          <input ng-model="furniture.price" id="furniturePrice{{$index}}" type="number" min="0" class="form-control" placeholder="Furniture price" />
         </div>
       </td>
+
+      <td>
+        <div class="form-group" ng-class="{'has-error': !FurnituresCtrl.validFurnitureEntryDate($index)}">
+          <input ng-model="furniture.entryDate" id="furnitureEntryDate{{$index}}" type="text" class="form-control" placeholder="DD/MM/YYYY" />
+        </div>
+      </td>
+
       <td>
         <div class="checkbox text-center">
          <label>
-           <input ng-model="furniture.available" id="available{{$index}}" type="checkbox" />
+           <input ng-model="furniture.inOffer" id="inOffer{{$index}}" type="checkbox" />
          </label>
         </div>
       </td>
