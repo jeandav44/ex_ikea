@@ -1,0 +1,13 @@
+<div class="row">
+    <h1>Result:</h1>
+    <div ng-repeat="furniture in PopUpCtrl.furnitures">
+    	id: {{furniture.getId()}}<br/>
+    	idFurnitureType: {{furniture.getIdFurnitureType()}}<br/>
+    	name: {{furniture.getName()}}<br/>
+    	director: {{furniture.getDirector()}}<br/>
+    	price: {{furniture.getPrice()}}<br/>
+    	available: {{furniture.getAvailable()}}<br/>
+    	<br/>
+    </div>
+    <button class="btn btn-default pull-right" ng-click="PopUpCtrl.close()">Close</button>
+</div>
